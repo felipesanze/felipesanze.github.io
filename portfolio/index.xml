@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PROJECTS on Felipe Sanz</title>
+    <link>https://felipesanze.github.io/portfolio/</link>
+    <description>Recent content in PROJECTS on Felipe Sanz</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; 2020 a hugo theme by [somrat](https://somrat.netlify.com)</copyright>
+    <lastBuildDate>Sat, 20 Aug 2022 12:14:34 +0600</lastBuildDate><atom:link href="https://felipesanze.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>F1 Race Winner Predictor</title>
+      <link>https://felipesanze.github.io/portfolio/project-1/</link>
+      <pubDate>Sat, 20 Aug 2022 12:14:34 +0600</pubDate>
+      
+      <guid>https://felipesanze.github.io/portfolio/project-1/</guid>
+      <description>See code on GitHub
+Overview Purpose: to develop a Machine Learning classification model that predicts the winner of each race of the 2021 season of Formula 1.</description>
+    </item>
+    
+    <item>
+      <title>F1 Race Winner Predictor</title>
+      <link>https://felipesanze.github.io/portfolio/project-2/</link>
+      <pubDate>Sat, 20 Aug 2022 12:14:34 +0600</pubDate>
+      
+      <guid>https://felipesanze.github.io/portfolio/project-2/</guid>
+      <description>See code on GitHub
+Overview Purpose: to develop a Machine Learning classification model that predicts the winner of each race of the 2021 season of Formula 1.</description>
+    </item>
+    
+  </channel>
+</rss>
