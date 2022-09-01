@@ -155,9 +155,9 @@
           <p><a href="https://github.com/felipesanze/F1_Race_Winner_Predictor" target="_blank" rel="noopener noreferrer">See code on GitHub</a></p>
 <h2 id="overview">Overview</h2>
 <ul>
-<li><strong>Purpose:</strong> to develop a Machine Learning classification model that predicts the winner of each race of the 2021 season of Formula 1. Ultimately, have a robust model that can beat the odds in the upcoming seasons (despite the regulation changes of 2022)</li>
+<li><strong>Purpose:</strong> to develop a Machine Learning classification model that predicts the winner of each race of the 2021 season of Formula 1. Ultimately, to have a robust model that can beat the odds in the upcoming seasons (despite the regulation changes of 2022).</li>
 <li><strong>Data source:</strong> scraped from the <a href="https://www.formula1.com/">Formula 1 website</a> and the <a href="https://ergast.com/mrd/">Ergast F1</a> API.</li>
-<li><strong>Modeling:</strong> built a tailor-made scoring function that evalueates predictions race after race and calculates a season-wide precision score. Used that score to compare and tune an <code>SVM</code>, a <code>Random Forest</code>, an <code>XGBoost</code>, and a <code>Logistic Regression</code>. <code>Neural networks</code> will be coming soon.</li>
+<li><strong>Modeling:</strong> built a tailor-made scoring function that evaluates predictions race after race and calculates a season-wide precision score. Used that score to compare and tune an <code>SVM</code>, a <code>Random Forest</code>, an <code>XGBoost</code>, and a <code>Logistic Regression</code>. <code>Neural networks</code> will be coming soon.</li>
 <li><strong>Results:</strong> the model is able to predict the race winner with a <code>63%</code> presicion score. That translates into right above half the races correctly predicted.</li>
 </ul>
 <h2 id="1-data-collection">1. Data Collection</h2>
@@ -215,8 +215,8 @@ After dropping redundant columns the feature correlation matrix looks like this:
 <h2 id="4-modeling">4. Modeling</h2>
 <p><strong>Target variable:</strong> <code>win</code> (i.e. did the driver win the race or not)</p>
 <h3 id="41-main-challenge">4.1. Main challenge</h3>
-<p>The main modeling challenge in this case is that the model will not predict the winner of each race if I pass it the entire dataset from 1950 to 2021. What we need it to do is to only see one race at a time and predict the winner. For this I needed a custom made scoring and predicting function that processes race per race in batches.<br>
-This also adds a layer of complexity to the model tunning process the evaluation of my results.</p>
+<p>The main modeling challenge in this case is that the model will not predict the winner of each race if I pass it the entire dataset from 1950 to 2021. What we need it to do is to only see one race at a time and predict the winner. For this, I needed a custom made scoring and predicting function that processes race per race in batches.<br>
+This also adds a layer of complexity to the model tunning process and to the evaluation of my results.</p>
 <h3 id="42-prediction-and-scoring">4.2. Prediction and scoring</h3>
 <p>For a given race:</p>
 <ul>
@@ -229,20 +229,20 @@ Model score:</li>
 </ul>
 <h3 id="43-feature-importance">4.3. Feature importance</h3>
 <ul>
-<li>It makes sense that the qualifying result (&lsquo;grid&rsquo;) be disproportionately more important than other features because it is the closest event to the actual race, specially in circuits where overtaking is more difficult. It is an indication of a driver&rsquo;s performance in &rsquo;lab conditions&rsquo;, without attacking, deffending, or managing tyres.</li>
-<li>The accumulated constructor and driver points are an indication of how likely is this driver to win given its positions in the past races of the season. They contain the year-to-date performance of a driver/constructor in a single number.</li>
+<li>It makes sense that the qualifying result (&lsquo;grid&rsquo;) be disproportionately more important than other features because it is the closest event to the actual race, especially in circuits where overtaking is more difficult. It is an indication of a driver&rsquo;s performance in &rsquo;lab conditions&rsquo;, without attacking, defending, or managing tyres.</li>
+<li>The accumulated constructor and driver points are an indication of how likely a driver will win given its position in the past races of the season. They contain the year-to-date performance of a driver/constructor in a single number.</li>
 <li>Similarly, the driver&rsquo;s age is a proxy for their tenure or experience in F1 (the two are extremely correlated). It is the all-time hisory of the driver.</li>
-<li>Weather_wet turned out to be way less important than expected.</li>
+<li>Weather_wet turned out to be significantly less important than expected.</li>
 </ul>
 <figure><img src="https://felipesanze.github.io/images/portfolio/feature_importance_mdi.png" width="800" height="700"/>
 </figure>
 
 <h3 id="44-results">4.4. Results</h3>
-<p>The model is able to predict the race winner with a <code>63%</code> presicion score. That translates into right above half the races correctly predicted. I do not recommend to use this model for betting purposes beyond the 2021 season. F1 regulations have suffered significant changes that make it unlikely that this model perform well from 2022 onwards. I will revisit it after the 2022 season ends to evaluate that possibility.</p>
+<p>The model is able to predict the race winner with a <code>63%</code> presicion score. That translates into right above half the races correctly predicted. I do not recommend using this model for betting purposes beyond the 2021 season. F1 regulations have suffered significant changes that make it unlikely that this model will perform well beyond 2021. I will revisit it after the 2022 season ends to evaluate that possibility.</p>
 <h2 id="5-next-steps">5. Next Steps</h2>
 <ul>
-<li>Put it all into production: create an automated web interface where, right after qualifying on Saturday, the user presses a button, the fresh data gets scraped and ran through the model. The user will get an expected winner for the race of that weekend. Just for the fun of it&hellip;</li>
-<li>While estimating the probability of winning, we set teh driver with the higest probability as the winner. What if we calculate the percentage difference between the predicted winner and the predicted P2? This could give us a sense of how certain the model is about its prediction for a given race.</li>
+<li>Put it all into production: Create an automated web interface where, right after qualifying on Saturday, the user presses a button, the fresh data gets scraped and run through the model. The user will get an expected winner for that weekend. Just for the fun of it&hellip;</li>
+<li>While estimating the probability of winning, we set the driver with the highest probability as the winner. What if we calculate the percentage difference between the predicted winner and the predicted P2? This could give us a sense of how certain the model is about its prediction for a given race.</li>
 <li>Using a GPU, build a Neural Network to hopefully improve the quality of our predictions.</li>
 <li>Use Variance Inflation Factor (VIF) to check for multicollinearity.</li>
 </ul>
